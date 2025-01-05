@@ -11,6 +11,7 @@ import '../widgets/header_mobile.dart';
 import '../widgets/main_desktop.dart';
 import '../widgets/main_mobile.dart';
 import '../widgets/site_logo.dart';
+import '../widgets/skills_desktop.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -65,33 +66,10 @@ class HomePage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Row(
-                    children: [
-                      ConstrainedBox(
-                        constraints: BoxConstraints(
-                          maxWidth: 450.0,
-                        ),
-                        child: Wrap(
-                          children: [
-                            for (int i = 0; i < platformItems.length; i++)
-                              Container(
-                                width: 200,
-                                decoration: BoxDecoration(
-                                  color: CustomColor.bgLight2,
-                                  borderRadius: BorderRadius.circular(
-                                    5.0,
-                                  ),
-                                ),
-                                child: ListTile(
-                                  leading: Image.asset(platformItems[i]['img']),
-                                  title: Text(platformItems[i]['title']),
-                                ),
-                              ),
-                          ],
-                        ),
-                      )
-                    ],
-                  )
+                  SizedBox(
+                    height: 50.0,
+                  ),
+                  SkillsDesktop(),
                 ],
               ),
             ),
