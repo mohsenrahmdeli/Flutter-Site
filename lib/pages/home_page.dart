@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../constans/color.dart';
 import '../constans/nav_items.dart';
 import '../constans/size.dart';
+import '../constans/skills_item.dart';
 import '../styles/style.dart';
 import '../widgets/drawer_mobile.dart';
 import '../widgets/header_desktop.dart';
@@ -43,12 +44,56 @@ class HomePage extends StatelessWidget {
               MainDesktop()
             else
               MAinMobile(),
-
             //Skill
             Container(
-              height: 500,
-              width: double.maxFinite,
-              color: Colors.blueGrey,
+              width: screenWidth,
+              color: CustomColor.bgLight1,
+              padding: EdgeInsets.fromLTRB(
+                25,
+                20,
+                25,
+                60,
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'What can I do?',
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: CustomColor.whitePrimary,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      ConstrainedBox(
+                        constraints: BoxConstraints(
+                          maxWidth: 450.0,
+                        ),
+                        child: Wrap(
+                          children: [
+                            for (int i = 0; i < platformItems.length; i++)
+                              Container(
+                                width: 200,
+                                decoration: BoxDecoration(
+                                  color: CustomColor.bgLight2,
+                                  borderRadius: BorderRadius.circular(
+                                    5.0,
+                                  ),
+                                ),
+                                child: ListTile(
+                                  leading: Image.asset(platformItems[i]['img']),
+                                  title: Text(platformItems[i]['title']),
+                                ),
+                              ),
+                          ],
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
             Container(
               height: 500,
