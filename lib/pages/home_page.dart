@@ -12,6 +12,7 @@ import '../widgets/main_desktop.dart';
 import '../widgets/main_mobile.dart';
 import '../widgets/site_logo.dart';
 import '../widgets/skills_desktop.dart';
+import '../widgets/skills_mobile.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -69,7 +70,10 @@ class HomePage extends StatelessWidget {
                   SizedBox(
                     height: 50.0,
                   ),
-                  SkillsDesktop(),
+                  if (constraints.maxWidth >= kMedDesktopWidth)
+                    SkillsDesktop()
+                  else
+                    SkillsMobile(),
                 ],
               ),
             ),
