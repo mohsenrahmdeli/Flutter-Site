@@ -7,6 +7,8 @@ import '../styles/style.dart';
 import '../widgets/drawer_mobile.dart';
 import '../widgets/header_desktop.dart';
 import '../widgets/header_mobile.dart';
+import '../widgets/main_desktop.dart';
+import '../widgets/main_mobile.dart';
 import '../widgets/site_logo.dart';
 
 class HomePage extends StatelessWidget {
@@ -15,11 +17,15 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+    final screenWidth = screenSize.width;
+    final screenHeight = screenSize.height;
     return LayoutBuilder(builder: (context, constraints) {
       return Scaffold(
         key: scaffoldKey,
         backgroundColor: CustomColor.scaffoldBg,
-        endDrawer: constraints.maxWidth >= kMinDesktopWidth ? null : DrawerMobile(),
+        endDrawer:
+            constraints.maxWidth >= kMinDesktopWidth ? null : DrawerMobile(),
         body: ListView(
           scrollDirection: Axis.vertical,
           children: [
@@ -33,6 +39,11 @@ class HomePage extends StatelessWidget {
                   scaffoldKey.currentState!.openEndDrawer();
                 },
               ),
+            if (constraints.maxWidth >= kMinDesktopWidth)
+              MainDesktop()
+            else
+              MAinMobile(),
+
             //Skill
             Container(
               height: 500,
